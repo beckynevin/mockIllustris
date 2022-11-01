@@ -20,6 +20,12 @@
 #  Things that need to be double checked:
 #  1. The cosmological dimming.
 #  2. Adding the background residuals in the appropriate units.
+import utils
+import os
+import astropy
+from astropy.cosmology import WMAP9, FlatLambdaCDM, Planck13, Planck15, Planck18, z_at_value
+from astropy import units as u
+
 
 os.environ['WEBBPSF_PATH']='/Users/rebeccanevin/Documents/CfA_Code/mockIllustris/webbpsf-data'
 
@@ -55,7 +61,7 @@ redshift_observation = z_at_value(Planck15.angular_diameter_distance,10 * u.Mpc,
 #redshift_observation = 0.002257
 #print(redshift_observation)
 
-kpc_arcmin_camera=Planck15.kpc_proper_per_arcmin(redshift_observation)#insert the redshift to get the kpc/arcmin scaling                      
+kpc_arcmin_camera = Planck15.kpc_proper_per_arcmin(redshift_observation)#insert the redshift to get the kpc/arcmin scaling                      
 
 print(kpc_arcmin_camera)
 
@@ -63,7 +69,7 @@ print(kpc_arcmin_camera)
 id = 41130
 merger = True
 
-im = pyfits.open('SKIRT_files/output'+str(snap)+'_'+str(id)+'/dusty_img3_total.fits')#41130
+im = astropy.io.fits.open('SKIRT_files/output'+str(snap)+'_'+str(id)+'/dusty_img3_total.fits')#41130
 hdr = im[0].header
 
 FOV_arc = hdr['CDELT1']*np.shape(im[0].data)[1]

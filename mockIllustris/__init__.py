@@ -1,2 +1,3 @@
-# init
-from utils import *
+# __init__.py
+import utils
+import IllustrisTNG50_mockimage_JWST

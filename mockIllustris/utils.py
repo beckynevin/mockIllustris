@@ -6,8 +6,8 @@ import astropy.io.fits as pyfits
 import matplotlib.pyplot as plt
 import numpy as np
 import matplotlib
-#import sedpy
-from sedpy import observate
+import sedpy
+#from sedpy import observate
 from astropy.cosmology import WMAP9, FlatLambdaCDM, Planck13, Planck15, Planck18, z_at_value
 import astropy.units as u
 import astropy.constants as con
@@ -22,8 +22,6 @@ from astropy.nddata import Cutout2D
 import math
 import pandas as pd
 
-
-os.environ['WEBBPSF_PATH']='/Users/rebeccanevin/Documents/CfA_Code/mockIllustris/webbpsf-data'
 
 
 def find_nearest(array,value):
